@@ -115,7 +115,7 @@ def refresh_focused_window():
             obs_focused = True
     elif obs_focused:
         print(colored("OBS DeFocused", "red"))
-        obs_focused = False
+        obs_focused = True
 
 
 vec = pg.math.Vector2
