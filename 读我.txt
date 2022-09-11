@@ -1,0 +1,61 @@
+
+直接运行src内文件需要：
+Python 3.7
++
+requirements.txt里所有的库
+
+直接运行exe：
+能独立运行（不需要环境），该exe直接拿pyinstaller编译
+
+
+
+NS+Arduino 可以实现：
+1.	键鼠+第三方手柄映射控制NS
+2.	脚本控制NS，重复播放录制后的多个按键
+
+NS+Arduino+采集卡 可以实现：
+1.	iPad/iPhone/Mac/Win/安卓/Linux 串流
+2.	外网本地联机
+3.	分析图片传递按键实现脚本控制
+
+脚本键盘按键：
+4：重启脚本并切换指针到下一个手柄（如果你电脑连了多个手柄）
+5：重启脚本
+6：关闭脚本
+7：开/关鼠标（请调整配置文件坐标使用鼠标）
+其它键映射请参考源码内pc_input.py，手柄的写在配置文件里了
+
+默认情况手柄和键盘无法同时输入，切换方法为在允许的置顶窗口内直接按键盘或者手柄的ABXY键
+
+已知部分手柄需要你讲脚本置顶后才可输入
+（Moonlight/Parsec串流允许任意窗口映射）
+键盘鼠标也允许在任意置顶窗口时映射
+
+配置文件：
+keyboard_apps：允许键盘映射开启的置顶窗口名（可填入部分）
+mode：0 : 正常/ 1 : 录制按键(仅键盘输入)/ 2 : 重复已录制的按键
+剩下部分自行猜测
+
+注意：
+1.	目前版本下脚本控制不要用于摇杆（方向键），因为会有极其细微的延迟偏差。因此Speedrun是不可能实现的。
+2.	鼠标的操作体验大大劣于手柄摇杆，并且优化好的可能性不大，因此不用担心影响游戏平衡。
+
+
+
+
+该脚本的Github: 
+https://github.com/MuddyW/NS-Input
+
+
+原项目们的Github: 
+https://github.com/wchill/SwitchInputEmulator
+https://github.com/bertrandom/snowball-thrower
+https://github.com/shinyquagsire23/Switch-Fightstick
+
+
+DFU Programmer:
+https://www.arduino.cc/en/Hacking/DFUProgramming8U2
+
+
+Flip下载直链：
+https://github.com/arduino/ArduinoCore-avr/tree/master/firmwares/atmegaxxu2
