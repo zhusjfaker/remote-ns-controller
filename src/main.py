@@ -1,3 +1,4 @@
+import pygame as pg
 import time
 import codec
 import joycon
@@ -12,7 +13,6 @@ import win32gui
 from termcolor import colored
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
-import pygame as pg
 
 
 def on_release(key):
@@ -158,6 +158,9 @@ if enable_gamepad:
     axes = gamepads[joycon_config.gamepad_pointer].get_numaxes()
     dpads = gamepads[joycon_config.gamepad_pointer].get_numhats()
 
+    # print("button", buttons)
+    # print("axes", axes)
+
 running = True
 MOUSE = mouse.Controller()
 COUNTING = 0
@@ -234,7 +237,7 @@ while running:
                 else:
                     joycon.release("R_STICK")
 
-    if GIRL_MODE == NORMAL and not keyboard_manager.enable_keyboard and enable_gamepad:
+    if GIRL_MODE == NORMAL and enable_gamepad:
         # get gamepad inputs
         for i in range(buttons):
             if i == 0:
@@ -358,13 +361,13 @@ while running:
                 stick_l /= math.sqrt(abs(stick_l.x) + abs(stick_l.y))
 
         # right stick
-        if stick_r.length_squared() != 0:
-            if stick_r.length() < deadzone_stick:
-                stick_r.scale_to_length(0)
-                joycon.release(joycon_config.get_config_button("R_STICK"))
-            else:
-                joycon.press(joycon_config.get_config_button("R_STICK"),
-                             stick_r.x,
-                             stick_r.y)
-                stick_r /= math.sqrt(abs(stick_r.x) + abs(stick_r.y))
+        # if stick_r.length_squared() != 0:
+        #     if stick_r.length() < deadzone_stick:
+        #         stick_r.scale_to_length(0)
+        #         joycon.release(joycon_config.get_config_button("R_STICK"))
+        #     else:
+        #         joycon.press(joycon_config.get_config_button("R_STICK"),
+        #                      stick_r.x,
+        #                      stick_r.y)
+        #         stick_r /= math.sqrt(abs(stick_r.x) + abs(stick_r.y))
 quit_me()
